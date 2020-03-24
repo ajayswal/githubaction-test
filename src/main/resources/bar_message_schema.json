@@ -1,0 +1,906 @@
+{
+  "type": "record",
+  "name": "BarMessage",
+  "namespace": "com.ibm.weather.analytics.poc.ingest.parquetwriter",
+  "fields": [
+    {
+      "name": "nameSpace",
+      "type": "string"
+    },
+    {
+      "name": "sessionID",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "sessionId",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "startSession",
+      "type": [
+        "null",
+        "long"
+      ]
+    },
+    {
+      "name": "endSession",
+      "type": "long"
+    },
+    {
+      "name": "adUnit",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "locale",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "advertisement",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "Advertisement",
+          "fields": [
+            {
+              "name": "creativeId",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "lineItemId",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "clickURL",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "mobileAdvertId",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "webAdvertId",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "platform",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "isServedByDFP",
+              "type": [
+                "null",
+                "boolean"
+              ]
+            },
+            {
+              "name": "apiInstanceId",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "siteId",
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "User",
+          "fields": [
+            {
+              "name": "id",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "installId",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "locale",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "registered",
+              "type": [
+                "null",
+                "boolean"
+              ]
+            },
+            {
+              "name": "gpsEnabled",
+              "type": [
+                "null",
+                "boolean"
+              ]
+            },
+            {
+              "name": "followMeEnabled",
+              "type": [
+                "null",
+                "boolean"
+              ]
+            },
+            {
+              "name": "authenticatedUsing",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "entitlements",
+              "type": [
+                {
+                  "type": "record",
+                  "name": "None",
+                  "namespace": "scala",
+                  "fields": []
+                },
+                {
+                  "type": "record",
+                  "name": "Some__List",
+                  "namespace": "scala",
+                  "fields": [
+                    {
+                      "name": "x",
+                      "type": {
+                        "type": "array",
+                        "items": "string"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "adId",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "userType",
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "device",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "Device",
+          "fields": [
+            {
+              "name": "manufacturer",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "model",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "deviceType",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "locale",
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "network",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "Network",
+          "fields": [
+            {
+              "name": "networkType",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "carrier",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "carrierNetworkClass",
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "os",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "Os",
+          "fields": [
+            {
+              "name": "platform",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "version",
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "browser",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "Browser",
+          "fields": [
+            {
+              "name": "name",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "codeName",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "product",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "version",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "userAgent",
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "twcRelease",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "TwcRelease",
+          "fields": [
+            {
+              "name": "appName",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "appVersion",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "svcCommit",
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "currentLocation",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "CurrentLocation",
+          "fields": [
+            {
+              "name": "timezoneOffset",
+              "type": [
+                "null",
+                "double"
+              ]
+            },
+            {
+              "name": "coords",
+              "type": [
+                "null",
+                {
+                  "type": "record",
+                  "name": "Coords",
+                  "fields": [
+                    {
+                      "name": "lat",
+                      "type": [
+                        "null",
+                        "double"
+                      ]
+                    },
+                    {
+                      "name": "lon",
+                      "type": [
+                        "null",
+                        "double"
+                      ]
+                    },
+                    {
+                      "name": "lng",
+                      "type": [
+                        "null",
+                        "double"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "dateTime",
+              "type": [
+                "null",
+                "long"
+              ]
+            },
+            {
+              "name": "foreground",
+              "type": [
+                "null",
+                "boolean"
+              ]
+            },
+            {
+              "name": "horizAccuracy",
+              "type": [
+                "null",
+                "int"
+              ]
+            },
+            {
+              "name": "altitude",
+              "type": [
+                "null",
+                "int"
+              ]
+            },
+            {
+              "name": "vertAccuracy",
+              "type": [
+                "null",
+                "int"
+              ]
+            },
+            {
+              "name": "pressure",
+              "type": [
+                "null",
+                "double"
+              ]
+            },
+            {
+              "name": "city",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "state",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "country",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "speed",
+              "type": [
+                "null",
+                "double"
+              ]
+            },
+            {
+              "name": "zip",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "location",
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            {
+              "name": "temperature",
+              "type": [
+                "null",
+                "double"
+              ]
+            },
+            {
+              "name": "weatherIcon",
+              "type": [
+                "null",
+                {
+                  "type": "record",
+                  "name": "WeatherIcon",
+                  "fields": [
+                    {
+                      "name": "id",
+                      "type": [
+                        "null",
+                        "int"
+                      ]
+                    },
+                    {
+                      "name": "name",
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "weatherCondition",
+              "type": [
+                "null",
+                {
+                  "type": "record",
+                  "name": "WeatherCondition",
+                  "fields": [
+                    {
+                      "name": "bucket",
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    },
+                    {
+                      "name": "description",
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    },
+                    {
+                      "name": "timeframe",
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "arriveTime",
+              "type": [
+                "null",
+                "long"
+              ]
+            },
+            {
+              "name": "departTime",
+              "type": [
+                "null",
+                "long"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "locations",
+      "type": [
+        "null",
+        {
+          "type": "array",
+          "items": "CurrentLocation"
+        }
+      ]
+    },
+    {
+      "name": "pageName",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "viewId",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "places",
+      "type": [
+        "null",
+        {
+          "type": "array",
+          "items": {
+            "type": "record",
+            "name": "Place",
+            "fields": [
+              {
+                "name": "id",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              {
+                "name": "city",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              {
+                "name": "state",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              {
+                "name": "country",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              {
+                "name": "dma",
+                "type": [
+                  "scala.None",
+                  {
+                    "type": "record",
+                    "name": "Some__Either",
+                    "namespace": "scala",
+                    "fields": [
+                      {
+                        "name": "x",
+                        "type": [
+                          "string",
+                          "int"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "tag",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              {
+                "name": "type",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "events",
+      "type": [
+        "null",
+        {
+          "type": "array",
+          "items": {
+            "type": "record",
+            "name": "Event",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "name": "dateTime",
+                "type": "long"
+              },
+              {
+                "name": "eventData",
+                "type": [
+                  "scala.None",
+                  {
+                    "type": "record",
+                    "name": "Some__Map",
+                    "namespace": "scala",
+                    "fields": [
+                      {
+                        "name": "x",
+                        "type": {
+                          "type": "map",
+                          "values": "string"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "metrics",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "Metrics",
+          "fields": [
+            {
+              "name": "timers",
+              "type": {
+                "type": "array",
+                "items": {
+                  "type": "record",
+                  "name": "Timer",
+                  "fields": [
+                    {
+                      "name": "name",
+                      "type": "string"
+                    },
+                    {
+                      "name": "timerStart",
+                      "type": [
+                        "null",
+                        "long"
+                      ]
+                    },
+                    {
+                      "name": "startEpochMillis",
+                      "type": [
+                        "null",
+                        "long"
+                      ]
+                    },
+                    {
+                      "name": "duration",
+                      "type": "long"
+                    },
+                    {
+                      "name": "description",
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "counters",
+              "type": {
+                "type": "array",
+                "items": {
+                  "type": "record",
+                  "name": "Counter",
+                  "fields": [
+                    {
+                      "name": "name",
+                      "type": "string"
+                    },
+                    {
+                      "name": "count",
+                      "type": "long"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "gauges",
+              "type": {
+                "type": "array",
+                "items": {
+                  "type": "record",
+                  "name": "Gauge",
+                  "fields": [
+                    {
+                      "name": "name",
+                      "type": "string"
+                    },
+                    {
+                      "name": "gaugeStart",
+                      "type": [
+                        "null",
+                        "long"
+                      ]
+                    },
+                    {
+                      "name": "epochMillis",
+                      "type": [
+                        "null",
+                        "long"
+                      ]
+                    },
+                    {
+                      "name": "val",
+                      "type": "long"
+                    },
+                    {
+                      "name": "unit",
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    },
+                    {
+                      "name": "units",
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tags",
+      "type": [
+        "scala.None",
+        "scala.Some__List"
+      ]
+    },
+    {
+      "name": "geoIpCountryCode",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "timezoneOffset",
+      "type": [
+        "null",
+        "double"
+      ]
+    }
+  ]
+}

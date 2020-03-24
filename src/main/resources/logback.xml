@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Enabled scanning for changes-->
+<!--Docs: https://logback.qos.ch/manual/configuration.html#autoScan-->
+<configuration scan="true" scanPeriod="1 minutes" debug="false">
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+    <!--STDOUT APPENDER CONFIGURATION-->
+
+    <!--Pattern docs: https://logback.qos.ch/manual/layouts.html#ClassicPatternLayout-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%highlight(%-5level)] - %date{ISO8601} - %logger{60} - %replace(%msg){'\n',' '}%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="asyncStdout" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="STDOUT"/>
+    </appender>
+
+    <!--!!!-->
+
+    <!--FILE APPENDER CONFIGURATION-->
+
+    <property name="SIZE" value="10MB"/>
+    <property name="MIN" value="1"/>
+    <property name="MAX" value="350"/>
+    <timestamp key="dateForName" datePattern="dd_MM_yyyy_HH:mm"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${application.home:-.}/logs/application.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${application.home:-.}/logs/application_${dateForName}_%i.log</fileNamePattern>
+            <minIndex>${MIN}</minIndex>
+            <maxIndex>${MAX}</maxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>${SIZE}</maxFileSize>
+        </triggeringPolicy>
+
+        <encoder>
+            <pattern>[%highlight(%-5level)] - %date{ISO8601} - %logger{60} - %replace(%msg){'\n',' '} %throwable{1} %n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ERRORFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <file>${application.home:-.}/logs/application-errors.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${application.home:-.}/logs/application-errors_${dateForName}_%i.log</fileNamePattern>
+            <minIndex>${MIN}</minIndex>
+            <maxIndex>${MAX}</maxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>${SIZE}</maxFileSize>
+        </triggeringPolicy>
+
+        <encoder>
+            <pattern>[%highlight(%-5level)] - %date{ISO8601} - %logger{60} - %replace(%msg){'\n',' '} %throwable{full} %n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="asyncFile" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE"/>
+    </appender>
+    <appender name="asyncErrorFile" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="ERRORFILE"/>
+    </appender>
+
+    <!--!!!-->
+
+    <!--LOG LEVEL CONFIGURATION-->
+
+    <!--Use one of next case of configuration:-->
+
+    <logger name="akka" level="debug">
+        <appender-ref ref="asyncStdout"/>
+        <appender-ref ref="asyncFile"/>
+        <appender-ref ref="asyncErrorFile"/>
+    </logger>
+
+    <logger name="akka.actor.TimerScheduler" level="OFF" />
+    <logger name="bar.BarMessageProtocol$" level="OFF" />
+    <logger name="com.weather.bar.BarMessageProtocol" level="OFF" />
+    <logger name="com.ibm.stocator.fs.ObjectStoreVisitor" level="INFO" />
+
+</configuration>
